@@ -27,7 +27,7 @@ namespace GameStore.Application.Categories.Commands.UpdateCategory
 
       if(categoryToUpdate is null)
       {
-        throw new NotFoundException("Category was not found.");
+        throw new NotFoundException("Category was not found");
       }
 
       await _categoryRepository.UpdateAsync(categoryToUpdate, request, cancellationToken);

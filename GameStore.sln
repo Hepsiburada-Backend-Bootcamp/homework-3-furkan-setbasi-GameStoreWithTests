@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameStore.API", "GameStore.API\GameStore.API.csproj", "{8F872384-8862-4C65-8B88-5E4DBDE44B17}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameStore.API", "GameStore.API\GameStore.API.csproj", "{8F872384-8862-4C65-8B88-5E4DBDE44B17}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameStore.Domain", "GameStore.Domain\GameStore.Domain.csproj", "{6D8AEA87-00C6-4248-AB9D-30B4AD509914}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameStore.Domain", "GameStore.Domain\GameStore.Domain.csproj", "{6D8AEA87-00C6-4248-AB9D-30B4AD509914}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameStore.Application", "GameStore.Application\GameStore.Application.csproj", "{0056AECF-C306-4721-ADA0-72C693A5B568}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameStore.Application", "GameStore.Application\GameStore.Application.csproj", "{0056AECF-C306-4721-ADA0-72C693A5B568}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameStore.Infrastructure", "GameStore.Infrastructure\GameStore.Infrastructure.csproj", "{6ACEAC70-36DE-4913-9B07-01F505E428E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameStore.Infrastructure", "GameStore.Infrastructure\GameStore.Infrastructure.csproj", "{6ACEAC70-36DE-4913-9B07-01F505E428E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameStore.UnitTests", "GameStore.Tests\GameStore.UnitTests\GameStore.UnitTests.csproj", "{42E4BCA9-25A2-44D9-A9ED-1F0C3E3FAF2A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{6ACEAC70-36DE-4913-9B07-01F505E428E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6ACEAC70-36DE-4913-9B07-01F505E428E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6ACEAC70-36DE-4913-9B07-01F505E428E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42E4BCA9-25A2-44D9-A9ED-1F0C3E3FAF2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42E4BCA9-25A2-44D9-A9ED-1F0C3E3FAF2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42E4BCA9-25A2-44D9-A9ED-1F0C3E3FAF2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42E4BCA9-25A2-44D9-A9ED-1F0C3E3FAF2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,7 +1,7 @@
 # GameStore with Tests
-### Includes unit and integration tests unlike the previous version.
+### Adding unit and integration tests (Work in Progress)
 
-Patika-Hepsiburada Backend Bootcamp Homework 2.
+Patika-Hepsiburada Backend Bootcamp Homework 3.
 
 Simple online video game store project that you can perform CRUD operations on Game, Developer and Category entities.
 
