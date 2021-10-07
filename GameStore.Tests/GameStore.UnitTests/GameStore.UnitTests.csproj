@@ -32,8 +32,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Application\Developers\Commands\" />
-    <Folder Include="Application\Developers\Queries\" />
     <Folder Include="Application\Games\Commands\" />
     <Folder Include="Application\Games\Queries\" />
   </ItemGroup>

@@ -15,10 +15,10 @@ using Xunit;
 
 namespace GameStore.UnitTests.Application.Categories.Commands.UpdateCategory
 {
-  public class UpdateCategoryCommandTests : IClassFixture<CommonTestFixture>
+  public class UpdateCategoryCommandHandlerTests : IClassFixture<CommonTestFixture>
   {
     private readonly IMapper _mapper;
-    public UpdateCategoryCommandTests(CommonTestFixture testFixture)
+    public UpdateCategoryCommandHandlerTests(CommonTestFixture testFixture)
     {
       _mapper = testFixture.Mapper;
     }

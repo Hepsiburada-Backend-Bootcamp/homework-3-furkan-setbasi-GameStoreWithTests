@@ -26,7 +26,7 @@ namespace GameStore.Application.Developers.Commands.UpdateDeveloper
 
       if(developerToUpdate is null)
       {
-        throw new NotFoundException("Developer was not found.");
+        throw new NotFoundException("Developer was not found");
       }
 
       await _developerRepository.UpdateAsync(developerToUpdate, request, cancellationToken);

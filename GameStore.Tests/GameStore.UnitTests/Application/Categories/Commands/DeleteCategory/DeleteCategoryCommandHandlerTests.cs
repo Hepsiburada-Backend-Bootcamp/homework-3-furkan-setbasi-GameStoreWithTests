@@ -13,7 +13,7 @@ using Xunit;
 
 namespace GameStore.UnitTests.Application.Categories.Commands.DeleteCategory
 {
-  public class DeleteCategoryCommandTests
+  public class DeleteCategoryCommandHandlerTests
   {
     [Fact]
     public async void Handle_WhenCommandWithExistingCategoryIdIsGiven_ShouldDeleteCategoryWithGivenId()
@@ -42,7 +42,7 @@ namespace GameStore.UnitTests.Application.Categories.Commands.DeleteCategory
     }
 
     [Fact]
-    public async void Handle_WhenCommandWithNonExistingCategoryIdIsGiven_ThrowsNotFoundException()
+    public void Handle_WhenCommandWithNonExistingCategoryIdIsGiven_ThrowsNotFoundException()
     {
       // Arrange
       var categoryRepository = MockCategoryRepository.GetMockCategoryRepository().Object;
