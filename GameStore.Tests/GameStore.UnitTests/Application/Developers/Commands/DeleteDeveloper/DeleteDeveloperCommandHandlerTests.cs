@@ -19,24 +19,24 @@ namespace GameStore.UnitTests.Application.Developers.Commands.DeleteDeveloper
     public async void Handle_WhenCommandWithExistingDeveloperIdIsGiven_ShouldDeleteDeveloperWithGivenId()
     {
       // Arrange
-      var categoryRepository = MockDeveloperRepository.GetMockDeveloperRepository().Object;
+      var developerRepository = MockDeveloperRepository.GetMockDeveloperRepository().Object;
 
-      var category = new Developer()
+      var developer = new Developer()
       {
         Name = Guid.NewGuid().ToString()
       };
 
-      Guid createdDeveloperId = await categoryRepository.CreateAsync(category, CancellationToken.None);
+      Guid createdDeveloperId = await developerRepository.CreateAsync(developer, CancellationToken.None);
 
       var request = new DeleteDeveloperCommand() { Id = createdDeveloperId };
 
-      var handler = new DeleteDeveloperCommandHandler(categoryRepository);
+      var handler = new DeleteDeveloperCommandHandler(developerRepository);
 
       // Act
       await handler.Handle(request, CancellationToken.None);
 
       // Assert
-      var deletedDeveloper = await categoryRepository.GetByIdAsync(createdDeveloperId, CancellationToken.None);
+      var deletedDeveloper = await developerRepository.GetByIdAsync(createdDeveloperId, CancellationToken.None);
 
       deletedDeveloper.Should().BeNull();
     }
@@ -45,14 +45,14 @@ namespace GameStore.UnitTests.Application.Developers.Commands.DeleteDeveloper
     public void Handle_WhenCommandWithNonExistingDeveloperIdIsGiven_ThrowsNotFoundException()
     {
       // Arrange
-      var categoryRepository = MockDeveloperRepository.GetMockDeveloperRepository().Object;
+      var developerRepository = MockDeveloperRepository.GetMockDeveloperRepository().Object;
 
       var request = new DeleteDeveloperCommand()
       {
         Id = Guid.NewGuid()
       };
 
-      var handler = new DeleteDeveloperCommandHandler(categoryRepository);
+      var handler = new DeleteDeveloperCommandHandler(developerRepository);
 
       // Act & Assert
       FluentActions

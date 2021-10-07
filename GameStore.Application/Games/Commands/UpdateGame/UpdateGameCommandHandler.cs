@@ -26,7 +26,7 @@ namespace GameStore.Application.Games.Commands.UpdateGame
 
       if(gameToUpdate is null)
       {
-        throw new NotFoundException("Game was not found.");
+        throw new NotFoundException("Game was not found");
       }
 
       await _gameRepository.UpdateAsync(gameToUpdate, request, cancellationToken);

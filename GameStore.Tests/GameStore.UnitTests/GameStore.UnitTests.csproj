@@ -31,9 +31,4 @@
 
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Application\Games\Commands\" />
-    <Folder Include="Application\Games\Queries\" />
-  </ItemGroup>
-
 </Project>

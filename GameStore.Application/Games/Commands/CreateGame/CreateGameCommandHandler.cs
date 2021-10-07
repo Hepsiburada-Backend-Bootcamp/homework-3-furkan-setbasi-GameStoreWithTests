@@ -16,7 +16,7 @@ namespace GameStore.Application.Games.Commands.CreateGame
     private readonly IGameRepository _gameRepository;
     private readonly IMapper _mapper;
 
-    public CreateGameCommandHandler(IMapper mapper, IGameRepository gameRepository)
+    public CreateGameCommandHandler(IGameRepository gameRepository, IMapper mapper)
     {
       _gameRepository = gameRepository;
       _mapper = mapper;

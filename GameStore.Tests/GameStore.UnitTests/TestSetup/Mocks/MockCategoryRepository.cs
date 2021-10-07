@@ -36,6 +36,14 @@ namespace GameStore.UnitTests.TestSetup.Mocks
         );
 
       mockCategoryRepository
+        .Setup(repo => repo.GetByNameAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
+        .ReturnsAsync(
+          (string name, CancellationToken cancellationToken) => {
+            return categories.Find(category => category.Name == name);
+          }
+         );
+
+      mockCategoryRepository
         .Setup(repo => repo.CreateAsync(It.IsAny<Category>(), It.IsAny<CancellationToken>()))
         .ReturnsAsync(
 

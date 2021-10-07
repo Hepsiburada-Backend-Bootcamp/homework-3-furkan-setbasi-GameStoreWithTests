@@ -14,7 +14,6 @@ namespace GameStore.UnitTests.TestSetup.Mocks
 {
   public class MockDeveloperRepository
   {
-
     public static Mock<IDeveloperRepository> GetMockDeveloperRepository()
     {
       List<Developer> developers = new List<Developer>()
