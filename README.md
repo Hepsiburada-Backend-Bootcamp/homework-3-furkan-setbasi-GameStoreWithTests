@@ -1,5 +1,5 @@
 # GameStore with Tests
-### Unit and integration tests added.
+### Cloned the previous project and added Unit and Integration tests.
 
 #### Unit Tests Code Coverage Report Summary
 ![Code coverage report summary](./code_coverage_report_summary.JPG)
