@@ -35,7 +35,6 @@ namespace GameStore.API
       services.AddApplication();
       services.AddInfrastructure();
 
-
       services.AddControllers(options =>
       options.Filters.Add<ApiExceptionFilterAttribute>())
         .AddFluentValidation(x => x.AutomaticValidationEnabled = false);

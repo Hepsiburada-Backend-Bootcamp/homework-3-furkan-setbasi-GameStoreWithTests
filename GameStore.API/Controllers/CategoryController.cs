@@ -32,7 +32,9 @@ namespace GameStore.API.Controllers
         Id = id
       };
 
-      return await Mediator.Send(query);
+      var result = await Mediator.Send(query);
+
+      return result;
     }
 
     [HttpPost]
