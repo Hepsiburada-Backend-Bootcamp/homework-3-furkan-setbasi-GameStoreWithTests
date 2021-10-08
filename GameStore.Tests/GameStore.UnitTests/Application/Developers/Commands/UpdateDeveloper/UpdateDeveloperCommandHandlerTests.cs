@@ -83,7 +83,8 @@ namespace GameStore.UnitTests.Application.Developers.Commands.UpdateDeveloper
 
       var developer = new Developer()
       {
-        Name = Guid.NewGuid().ToString()
+        Name = Guid.NewGuid().ToString(),
+        Country = Guid.NewGuid().ToString()
       };
 
       Guid createdDeveloperId = await developerRepository.CreateAsync(developer, CancellationToken.None);
@@ -91,7 +92,8 @@ namespace GameStore.UnitTests.Application.Developers.Commands.UpdateDeveloper
       var request = new UpdateDeveloperCommand()
       {
         Id = createdDeveloperId,
-        Name = ""
+        Name = "",
+        Country = "country name"
       };
 
       var handler = new UpdateDeveloperCommandHandler(developerRepository);
@@ -103,6 +105,40 @@ namespace GameStore.UnitTests.Application.Developers.Commands.UpdateDeveloper
       var updatedDeveloper = await developerRepository.GetByIdAsync(createdDeveloperId, CancellationToken.None);
 
       updatedDeveloper.Name.Should().Be(developer.Name);
+      updatedDeveloper.Country.Should().Be(request.Country);
+    }
+
+    [Fact]
+    public async void Handle_WhenCommandWithEmptyDeveloperCountryIsGiven_ShouldNotUpdateDeveloperCountry()
+    {
+      // Arrange
+      var developerRepository = MockDeveloperRepository.GetMockDeveloperRepository().Object;
+
+      var developer = new Developer()
+      {
+        Name = Guid.NewGuid().ToString(),
+        Country = Guid.NewGuid().ToString()
+      };
+
+      Guid createdDeveloperId = await developerRepository.CreateAsync(developer, CancellationToken.None);
+
+      var request = new UpdateDeveloperCommand()
+      {
+        Id = createdDeveloperId,
+        Name = "developer name",
+        Country = ""
+      };
+
+      var handler = new UpdateDeveloperCommandHandler(developerRepository);
+
+      // Act
+      await handler.Handle(request, CancellationToken.None);
+
+      // Assert
+      var updatedDeveloper = await developerRepository.GetByIdAsync(createdDeveloperId, CancellationToken.None);
+
+      updatedDeveloper.Country.Should().Be(developer.Country);
+      updatedDeveloper.Name.Should().Be(request.Name);
     }
   }
 }

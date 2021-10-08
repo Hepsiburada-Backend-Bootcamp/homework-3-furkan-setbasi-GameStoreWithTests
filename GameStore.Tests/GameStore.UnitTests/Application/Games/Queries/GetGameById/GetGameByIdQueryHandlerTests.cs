@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FluentAssertions;
+using GameStore.Application.Common.Exceptions;
 using GameStore.Application.Games.Queries.GetGameById;
 using GameStore.Domain.Entities;
 using GameStore.UnitTests.TestSetup;
@@ -52,6 +53,27 @@ namespace GameStore.UnitTests.Application.Games.Queries.GetGameById
       result.Id.Should().Be(createdGameId);
       result.Name.Should().Be(game.Name);
       result.Price.Should().Be(game.Price);
+    }
+
+    [Fact]
+    public void Handle_WhenQueryWithNonExistingGameIdIsGiven_ThrowsNotFoundException()
+    {
+      // Arrange
+      var gameRepository = MockGameRepository.GetMockGameRepository().Object;
+
+      GetGameByIdQuery request = new GetGameByIdQuery()
+      {
+        Id = Guid.NewGuid(),
+      };
+
+      GetGameByIdQueryHandler handler = new(gameRepository, _mapper);
+
+      // Act & Assert
+      FluentActions
+        .Invoking(async () => await handler.Handle(request, CancellationToken.None))
+        .Should()
+        .ThrowAsync<NotFoundException>()
+        .Result.And.Message.Should().Be("Game was not found");
     }
 
   }

@@ -73,7 +73,7 @@ namespace GameStore.UnitTests.Application.Games.Commands.UpdateGame
     }
 
     [Fact]
-    public async void Handle_WhenCommandWithDefaultPropertyValuesAreGiven_ShouldNotUpdateGameProperties()
+    public async void Handle_WhenCommandWithEmptyGameNameIsGiven_ShouldNotUpdateGameName()
     {
       // Arrange
       var gameRepository = MockGameRepository.GetMockGameRepository().Object;
@@ -90,7 +90,7 @@ namespace GameStore.UnitTests.Application.Games.Commands.UpdateGame
       {
         Id = createdGameId,
         Name = "",
-        Price = 0
+        Price = 60
       };
 
       var handler = new UpdateGameCommandHandler(gameRepository);
@@ -102,6 +102,39 @@ namespace GameStore.UnitTests.Application.Games.Commands.UpdateGame
       var updatedGame = await gameRepository.GetByIdAsync(createdGameId, CancellationToken.None);
 
       updatedGame.Name.Should().Be(game.Name);
+      updatedGame.Price.Should().Be(request.Price);
+    }
+
+    [Fact]
+    public async void Handle_WhenCommandWithZeroGamePriceIsGiven_ShouldNotUpdateGamePrice()
+    {
+      // Arrange
+      var gameRepository = MockGameRepository.GetMockGameRepository().Object;
+
+      var game = new Game()
+      {
+        Name = Guid.NewGuid().ToString(),
+        Price = 99
+      };
+
+      Guid createdGameId = await gameRepository.CreateAsync(game, CancellationToken.None);
+
+      var request = new UpdateGameCommand()
+      {
+        Id = createdGameId,
+        Name = "game",
+        Price = 0
+      };
+
+      var handler = new UpdateGameCommandHandler(gameRepository);
+
+      // Act
+      await handler.Handle(request, CancellationToken.None);
+
+      // Assert
+      var updatedGame = await gameRepository.GetByIdAsync(createdGameId, CancellationToken.None);
+
+      updatedGame.Name.Should().Be(request.Name);
       updatedGame.Price.Should().Be(game.Price);
     }
   }

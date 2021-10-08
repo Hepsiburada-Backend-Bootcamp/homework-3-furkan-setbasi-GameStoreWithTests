@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FluentAssertions;
+using GameStore.Application.Common.Exceptions;
 using GameStore.Application.Developers.Queries.GetDeveloperById;
 using GameStore.Domain.Entities;
 using GameStore.UnitTests.TestSetup;
@@ -52,5 +53,25 @@ namespace GameStore.UnitTests.Application.Developers.Queries.GetDeveloperById
       result.Name.Should().Be(developer.Name);
     }
 
+    [Fact]
+    public void Handle_WhenQueryWithNonExistingDeveloperIdIsGiven_ThrowsNotFoundException()
+    {
+      // Arrange
+      var developerRepository = MockDeveloperRepository.GetMockDeveloperRepository().Object;
+
+      GetDeveloperByIdQuery request = new GetDeveloperByIdQuery()
+      {
+        Id = Guid.NewGuid(),
+      };
+
+      GetDeveloperByIdQueryHandler handler = new(developerRepository, _mapper);
+
+      // Act & Assert
+      FluentActions
+        .Invoking(async () => await handler.Handle(request, CancellationToken.None))
+        .Should()
+        .ThrowAsync<NotFoundException>()
+        .Result.And.Message.Should().Be("Developer was not found");
+    }
   }
 }

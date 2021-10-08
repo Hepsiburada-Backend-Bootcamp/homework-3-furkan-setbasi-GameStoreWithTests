@@ -55,6 +55,7 @@ namespace GameStore.UnitTests.TestSetup.Mocks
           Developer developerToUpdate = developers.Find(c => c.Id == request.Id);
 
           developer.Name = string.IsNullOrWhiteSpace(request.Name) ? developer.Name : request.Name;
+          developer.Country = string.IsNullOrWhiteSpace(request.Country) ? developer.Country : request.Country;
 
           return Unit.Value;
         }
