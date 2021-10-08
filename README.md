@@ -1,5 +1,7 @@
 # GameStore with Tests
-### Adding unit and integration tests (Work in Progress)
+### Unit and integration tests added.
+
+![Code coverage report summary](./code_coverage_report_summary.JPG)
 
 Patika-Hepsiburada Backend Bootcamp Homework 3.
 
