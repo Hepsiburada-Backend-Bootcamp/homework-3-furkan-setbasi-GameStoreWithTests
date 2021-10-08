@@ -1,6 +1,7 @@
 # GameStore with Tests
 ### Unit and integration tests added.
 
+#### Unit Tests Code Coverage Report Summary
 ![Code coverage report summary](./code_coverage_report_summary.JPG)
 
 Patika-Hepsiburada Backend Bootcamp Homework 3.
